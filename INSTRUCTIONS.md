@@ -1,4 +1,4 @@
-# #Description
+# Description
 
 **Zeller** is the banking application allows its users to deposit and withdraw money from their bank account. Users can also view their past transactions.
 
@@ -8,7 +8,7 @@ Application has 4 major features as listed below:
 3. View Balance
 4. Display Past Transactions:
 
-# #Getting Started
+# Getting Started
 1. Clone the repository:
 git clone https://github.com/ChauhanShv/code-challenge-android-mobile.git
 
