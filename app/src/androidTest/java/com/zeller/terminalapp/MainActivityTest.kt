@@ -14,6 +14,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
@@ -68,7 +69,9 @@ class MainActivityTest {
         // Verify the balance is updated
         Espresso.onView(withId(R.id.balance))
             .check(ViewAssertions.matches(withText("80.0")))
+
     }
+
 
     @Test
     fun testWhenNoPastTransactions() {
@@ -109,5 +112,31 @@ class MainActivityTest {
         // Verify the no transactions yet displayed
         Espresso.onView(withId(R.id.pastTransactions))
             .check(ViewAssertions.matches(withText(containsString("Past Transactions:"))))
+
+    }
+
+    // incomplete test
+    fun testNotEnoughBalance() {
+        // Input an amount
+        Espresso.onView(withId(R.id.amountInput))
+            .perform(ViewActions.typeText("100.0"), ViewActions.closeSoftKeyboard())
+
+        // Click the deposit button first
+        Espresso.onView(withId(R.id.depositButton))
+            .perform(ViewActions.click())
+
+        // clear text first
+        Espresso.onView(withId(R.id.amountInput))
+            .perform(ViewActions.clearText(), ViewActions.closeSoftKeyboard())
+
+        Espresso.onView(withId(R.id.amountInput))
+            .perform(ViewActions.typeText("120.0"), ViewActions.closeSoftKeyboard())
+
+        // Click the withdraw button
+        Espresso.onView(withId(R.id.withdrawButton))
+            .perform(ViewActions.click())
+
+//        Espresso.onView(withText("Not enough balance")).inRoot(//toast matcher implementation required)
+//            .check(ViewAssertions.matches(isCompletelyDisplayed()))
     }
 }
