@@ -1,45 +1,60 @@
-# Android Coding Challenge
+#Description
+**Zeller** is the banking application allows its users to deposit and withdraw money from their bank account. Users can also view their past transactions.
 
-## Scenario
-Imagine you have just joined a mobile team that is currently working on a banking application.
-The application is live on the Play Store, and the CI/CD is set up to build a new version and push to the Play Store on every push to the repository.
+Application has 4 major features as listed below:
+1. Deposit Feature
+2. Withdraw Feature
+3. View Balance
+4. Display Past Transactions:
 
-Currently, the banking application allows its users to deposit and withdraw money from their bank account. 
-If the user does not have enough money, the app prevents them from making that withdrawal.
+#Getting Started
+1. Clone the repository:
+git clone https://github.com/ChauhanShv/code-challenge-android-mobile.git
 
-Example: Deposit:50.00(ok), Withdraw:25.00(ok), Withdraw:25.00(ok), Withdraw:0.1(not ok)
+2. Install/upgrade required dependencies as per your Android Studio IDE
 
-Note: This feature is currently implemented locally, the API to support this feature is still being worked on by the backend team but should be available in the near future.   
+#Architecture Choice
+This project follows mvvm + clean approach. Though some improvements needs to be made to achieve 100% clean architecture.
+Project contains 3 layers:
+1. Data - Single source of truth and store data (It can be easily be connected to remote data source i.e APIs)
+2. Domain - Contains Repo interface and Usecases handling business logic and act as a mediator between repository and presentation layer
+3. Presentation- Contains Viewmodel holding data state and UI for user to interact with
 
-## Your tasks
-- Introduce a new feature that allows the user to view their past transactions
-- Improve the current code which was intentionally made with poor programming practices and a few bugs
-- Improvements are to be made without rewriting the app
+#Decision made
+MainViewModel:
+1. Migration object class to class extending Android ViewModel in order to use repository and use-cases initiation
+2. Using state flows to emit various data states
+3. Using lifecycle scope to avoid memory leaks
+4. Survive device orientation
 
-## Expectations
-The code is simple enough for one person to easily refactor in a couple sittings, but what we're after is seeing your refactoring strategy.
-We also don't expect the you to refactor everything, instead, we'd like you to tell us what you found important to change and why.
-We expect that the repository is always at a releasable state. It is important to make sure that any change does not introduce any regressions or bugs.
+##Repository and usecases
+1. To Achieve abstraction and no needs to worry about how to access data 
+2. Contain Business logic well - easily scalable into transforming data required buy UI layer
 
-We understand that everybody's situation is different that's why we give candidates several days to complete the exercise. 
-Having said that, please don't spend more than a usual working day to complete this exercise.
+##Data Repository
+1. Data is stored in repository instead of viewmodel as a single source of truth (e.g balance is moved to repository instead of keeping in viewmodel)
+2. Update balance and observe real time when transaction made
+3. Repository stayed in same releasable state but modified the way it is being accessed creating no regressions
 
-Provide a README file to document any decisions/improvements you've deferred until later and any assumptions you have made.
+#Further Improvements i would like to do:
+1. Implement each layer models
+2. Mappers (data to domain, domain to presentation) to map data between layers to achieve full abstraction
+3. HILT/ Dagger to create DI modules for repository and usecases
+   a. Which then easily do constructor injection in view model and usecases
+   b. When project scaled and same usecases/ repository needs to be used in other features of the App.
+4. Fragments inside main activity
+   a.First fragment to do banking operation and display balance to user
+   b.Second fragment to display past transactions using lazy column
+5. Navigation graph for navigation between fragments
+6. Shared view model between fragments
+7. UI choice of composables instead of traditional xml
+8. Support both light & Dark Mode
+9. Further tests for edge cases
 
-### What we're looking for
-- Small incremental improvements, commit in small deliverable chunks
-- Show how you architect new code with a focus on testability
-- A testing strategy to support the refactoring
-    - Think about how you might prove you are not introducing regressions
-- Bonus marks for UI tests
-- Proper modelling of the domain, understand we are dealing with people's money
-- A README that will help other developers
+#Assumptions Made:
+1. Forked Repository into my github
+2. UI list to display a single textview is not a good approach but for the sake of just a task, so i did it that way, the right way is to use either recycler view or lazy column
+3. Withdraw 0.1 not supported but can withdraw greater than that or was it user can only withdraw whole amount e.g 25.00 not 25.10?, Am i right here? 
+4. To display past transaction on same page with button without creating new page
 
-### What you will be submitting
-- A zip file of the entire project including the .git folder -- the git history is an important part of this submission
-- A README that details the decisions you've made. This is a good place to write which improvements you've deferred but would like to work on given more time.
 
-## Questions?
-- All questions are good questions, if you have any, please don't hesitate to send us an e-mail at tim@myzeller.com
-
-Good luck and happy coding!
