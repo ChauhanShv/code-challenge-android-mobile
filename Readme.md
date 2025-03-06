@@ -40,6 +40,7 @@ MainViewModel:
 # Further Improvements i would like to do:
 1. Implement layer specific data models
 2. Mappers (data to domain, domain to presentation) to map data between layers to achieve full abstraction
+3. Better data store in repo using data class or similiar data structure and creating new resource called data provider which the connect with repository.
 3. HILT/ Dagger to create DI modules for repository and usecases
    a. Which then easily do constructor injection in view model and usecases
    b. When project scaled and same usecases/ repository needs to be used in other features of the App.
