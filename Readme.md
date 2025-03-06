@@ -31,6 +31,7 @@ MainViewModel:
 ## Repository and usecases
 1. To Achieve abstraction and no needs to worry about how to access data 
 2. Contain Business logic well - easily scalable into transforming data required buy UI layer
+3. Each usecase has single responsibility hence adhering to SOLID principles
 
 ## Data Repository
 1. Data is stored in repository instead of viewmodel as a single source of truth (e.g balance is moved to repository instead of keeping in viewmodel)
