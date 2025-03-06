@@ -1,4 +1,4 @@
-package com.zeller.terminalapp
+package com.zeller.terminalapp.domain.model
 
 class Transactions(
     val amount: Float,
