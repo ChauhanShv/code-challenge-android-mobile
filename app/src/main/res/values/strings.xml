@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TerminalApp</string>
+    <string name="no_transactions_info_message">Oh Seems like you havn\'t done any transactions yet.</string>
+    <string name="past_transactions_header">Past Transactions:</string>
 </resources>
