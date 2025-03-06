@@ -38,7 +38,7 @@ MainViewModel:
 3. Repository stayed in same releasable state but modified the way it is being accessed creating no regressions
 
 # Further Improvements i would like to do:
-1. Implement each layer models
+1. Implement layer specific data models
 2. Mappers (data to domain, domain to presentation) to map data between layers to achieve full abstraction
 3. HILT/ Dagger to create DI modules for repository and usecases
    a. Which then easily do constructor injection in view model and usecases
