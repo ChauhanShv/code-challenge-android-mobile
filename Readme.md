@@ -1,6 +1,6 @@
 # Description
 
-**Zeller** is the banking application allows its users to deposit and withdraw money from their bank account. Users can also view their past transactions.
+**Zeller** is the banking application allow its users to deposit and withdraw money from their bank account. Users can also view their past transactions.
 
 Application has 4 major features as listed below:
 1. Deposit Feature
