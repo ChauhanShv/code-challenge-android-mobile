@@ -38,7 +38,14 @@ MainViewModel:
 2. Update balance and observe real time when transaction made
 3. Repository stayed in same releasable state but modified the way it is being accessed creating no regressions
 
-# Further Improvements i would like to do:
+## UI tests using espresso
+UI tests are written to test 
+1. Amount deposit
+2. Amount withdraw
+3. See past transactions if available
+4. See empty message when no transactions
+
+## Further Improvements i would like to do:
 1. Implement layer specific data models
 2. Mappers (data to domain, domain to presentation) to map data between layers to achieve full abstraction
 3. Better data store in repo using data class or similar data structure and creating new resource called data provider which the connect with repository.
